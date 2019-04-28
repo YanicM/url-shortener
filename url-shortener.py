@@ -35,7 +35,8 @@ def get_url():
     input_url = request.form['url']
 
     # IMPLEMENT LOGIC TO VALIDATE URL!
-    if all([c in letters_digits for c in input_url]):
+    letters_digits_punct = letters_digits + string.punctuation
+    if all([c in letters_digits_punct for c in input_url]):
         try:
             valid_url = urlparse(input_url)
             if all([valid_url.scheme, valid_url.netloc, valid_url.path]):
